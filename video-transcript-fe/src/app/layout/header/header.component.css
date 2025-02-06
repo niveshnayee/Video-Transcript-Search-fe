@@ -1,0 +1,384 @@
+  .header {
+    background: linear-gradient(145deg, #4e5c69, #3d5970); /* Attractive gradient */
+      /* background-color: #333; */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    padding: 1rem 0;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  .header__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+  }
+  
+  .logo {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .logo:hover {
+    opacity: 0.9;
+  }
+  
+  .search-bar {
+    flex: 0 1 500px;
+    margin: 0 2rem;
+    position: relative;
+  }
+  
+  .search-bar input {
+    width: 100%;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    border: none;
+    background: rgba(250, 244, 244, 0.9);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .search-bar input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.3);
+  }
+  
+  .search-bar button {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 1rem;
+  }
+
+
+  /* Cancel Button */
+.btn.Cancel {
+  background-color: #f8f9fa;
+  color: #4a5568;
+  border-color: #e2e8f0;
+}
+
+.btn.Cancel:hover {
+  background-color: #e2e8f0;
+  transform: translateY(-1px);
+}
+
+.btn.Cancel:active {
+  transform: translateY(0);
+}
+
+/* Upload Button */
+.btn.upload {
+  background-color: #4299e1;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn.upload:hover {
+  background-color: #3182ce;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(66, 153, 225, 0.3);
+}
+
+.btn.upload:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Loading animation (optional) */
+.btn.upload.loading::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Focus states */
+.btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.4);
+}
+
+  
+  .btn {
+    padding: 0.6rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    border: 2px solid transparent;
+
+  }
+  
+  .btn-primary {
+    background-color: #6c757d;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: transparent;
+  }
+  
+  .btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: transparent;
+  }
+
+  .btn-secondary:hover {
+    border-color: white;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .btn-primary:hover {
+    border-color: white;
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* width: 100%; */
+    /* height: 100%; */
+    background-color: rgba(0, 0, 0, 0.5); /* Add background overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure modal is on top */
+  }
+  
+  .modal__content {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    position: relative;
+    z-index: 1010; /* Ensure content is above overlay */
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+    width: 90%;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #4a5568;
+    font-weight: 500;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: #4299e1;
+    outline: none;
+  }
+
+  .modal-background {
+    pointer-events: none; /* Disable interaction with background */
+    opacity: 0.3; /* Diminish the background when modal is open */
+  }
+  
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid, each column will be at least 250px */
+    gap: 1rem;
+    padding: 1rem;
+    justify-content: left; /* Center the grid items when there are fewer items */
+    transition: opacity 0.3s ease; /* Smooth transition for opacity change */
+  }
+  
+  .video-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 300px; /* Fixed width for individual video cards */
+    height: 350px; /* Fixed height for consistency */
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .video-card video {
+    width: 100%;
+    height: 180px; /* Fixed height for video thumbnail */
+    object-fit: cover;
+    border-bottom: 2px solid #e0e0e0; /* Separator line between video and info */
+  }
+  
+  .video-options {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  .options-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #666;
+  }
+  
+  .options-menu {
+    position: absolute;
+    top: 40px;
+    right: 10px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 0.5rem;
+    z-index: 10;
+  }
+  
+  .options-menu button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0.5rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  
+  .options-menu button:hover {
+    background: #f5f5f5;
+  }
+  
+  .edit-btn {
+    color: #007bff;
+  }
+  
+  .delete-btn {
+    color: #dc3545;
+  }
+  
+  .video-info {
+    padding: 10px;
+    flex-grow: 1; /* Ensures the info section fills remaining space */
+  }
+  
+  .video-info h3 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  
+  .video-info p {
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 0.5rem;
+  }
+  
+  .video-info .category {
+    color: #888;
+    font-size: 0.8rem;
+  }
+  
+  .video-card:hover {
+    transform: translateY(-5px);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .video-card:active {
+    transform: translateY(0);
+  }
+  
+  .no-videos {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  .error {
+    color: red;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+
+  .loading-spinner {
+    text-align: center;
+    padding: 1rem;
+    color: #4a5568;
+  }
+  
+  .error-message {
+    color: #e53e3e;
+    padding: 1rem;
+    background: #fff5f5;
+    border-radius: 8px;
+    margin: 1rem 0;
+  }
+  
+  .success-message {
+    color: #38a169;
+    padding: 1rem;
+    background: #f0fff4;
+    border-radius: 8px;
+    margin: 1rem 0;
+  }
+  

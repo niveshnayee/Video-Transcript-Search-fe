@@ -1,0 +1,95 @@
+<header class="header">
+    <div class="container">
+      <div class="header__inner">
+        <h1 class="logo">Video Search</h1>
+  
+        <div class="search-bar">
+          <input type="text" placeholder="Search videos..." />
+          <button type="submit">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M15.5 14h-2.25l-2.25-2.25-1.41 1.41L10.8 14h-2l2 2l1.41-1.41L13.16 14H15.5zM2 11c0 5 4 9 9 9s9-4 9-9s-4-9-9-9z" />
+            </svg>
+          </button>
+        </div>
+  
+        <div class="actions">
+          <button class="btn btn-primary" routerLink=''>Home</button>
+          <button class="btn btn-secondary" (click)="openUploadModal()">Upload</button>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Modal -->
+  <div *ngIf="isUploadModalOpen" class="modal">
+    <div class="modal__content animate">
+      <h2>Upload Video</h2>
+      <form (ngSubmit)="onUploadSubmit()">
+        <div class="form-group">
+          <label for="video_name">Video Name</label>
+          <input
+            type="text"
+            id="videoName"
+            [(ngModel)]="video_name"
+            name="videoName"
+            required
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="video_category">Category</label>
+          <input
+            type="text"
+            id="videoCategory"
+            [(ngModel)]="video_category"
+            name="videoCategory"
+            required
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="video_description">Description</label>
+          <textarea
+            id="videoDescription"
+            [(ngModel)]="video_description"
+            name="videoDescription"
+            rows="3"
+          ></textarea>
+        </div>
+  
+        <div class="form-group">
+          <label for="videoFile">Upload Video</label>
+          <input
+            type="file"
+            id="videoFile"
+            (change)="onFileSelect($event)"
+            required
+          />
+        </div>
+
+
+        <!-- Loading spinner and success/error messages -->
+      <div *ngIf="isUploading" class="loading-spinner">
+        <p>Uploading... Please wait.</p>
+      </div>
+      <div *ngIf="uploadError" class="error-message">
+        <p>{{ uploadError }}</p>
+      </div>
+      <div *ngIf="uploadSuccess" class="success-message">
+        <p>Video uploaded successfully!</p>
+      </div>
+  
+        <div class="actions">
+          <button
+            type="button"
+            class="btn Cancel"
+            (click)="closeUploadModal()"
+          >
+            Cancel
+          </button>
+          <button type="submit" class="btn upload">Upload</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

@@ -1,0 +1,47 @@
+<div class="video-detail-container">
+    <!-- Video Name -->
+    <h2>{{ video.name }}</h2>
+  
+    <!-- Main Content -->
+    <div class="content">
+      <!-- Video Player -->
+      <div class="video-player">
+        <video #videoPlayer controls [src]="video.url" playsinline></video>
+      </div>
+  
+      <!-- Chatbot UI -->
+      <div class="chatbot" #chatContainer [style.height.px]="chatHeight">
+        <!-- Chat Messages -->
+        <div class="chat-content">
+          <div *ngFor="let msg of messages" class="message" [ngClass]="{'user-message': msg.sender === 'user', 'bot-message': msg.sender === 'bot'}">
+            <span *ngIf="msg.timestamp; else plainText">
+              <a href="javascript:void(0)" (click)="seekToTimestamp(msg.timestamp)" class="timestamp-link">
+                [Jump to {{ msg.timestamp }}s]
+              </a> - {{ msg.text }}
+            </span>
+            <ng-template #plainText>{{ msg.text }}</ng-template>
+          </div>
+        </div>
+  
+        <!-- Chat Input -->
+        <div class="chat-input">
+          <input
+            type="text"
+            placeholder="Type your message..."
+            [(ngModel)]="newMessage"
+            (keyup.enter)="sendMessage()" 
+          />
+          <button (click)="sendMessage()"> 
+            <i class="material-icons">send</i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video information -->
+    <div class="video-info">
+        <p class="category">Category: {{ video.category }}</p>
+        <p class="description"><b>Description: </b>{{ video.description}} </p>
+    </div>
+  </div>
+  

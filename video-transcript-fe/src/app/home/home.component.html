@@ -1,0 +1,55 @@
+<!-- Error message display -->
+<div *ngIf="errorMessage" class="error">
+    <p>{{ errorMessage }}</p>
+  </div>
+  
+  <!-- Video grid layout -->
+  <div *ngIf="!errorMessage && videos.length > 0" class="video-grid">
+    <div 
+      *ngFor="let video of videos" 
+      class="video-card" 
+      (click)="onVideoClick(video)"
+      style="cursor: pointer;"
+    >
+      <!-- Video thumbnail -->
+      <video id="player-{{ video.video_id }}" playsinline controls>
+        <source src="{{ video.url }}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+  
+      <!-- Video information -->
+      <div class="video-info">
+        <h3>{{ video.name }}</h3>
+        <p class="category">Category: {{ video.category }}</p>
+        <p class="description">{{ video.description}} </p>
+      </div>
+
+      <!-- Options toggle icon -->
+      <div class="video-options" (click)="stopEvent($event)">
+        <button (click)="toggleOptions(video.video_id)" class="options-icon">
+          <span class="material-icons">more_vert</span>
+        </button>
+      </div>
+  
+      <!-- Conditional Edit/Delete options -->
+    <div
+        *ngIf="video.showOptions"
+        class="options-menu"
+        (click)="stopEvent($event)"
+    >
+        <button (click)="editVideo(video.video_id)" class="edit-btn">
+        Edit
+        </button>
+        <button (click)="deleteVideo(video.video_id)" class="delete-btn">
+        Delete
+        </button>
+    </div>
+
+    </div>
+  </div>
+  
+  <!-- No videos message -->
+  <div *ngIf="!errorMessage && videos.length === 0" class="no-videos">
+    <p>No videos available.</p>
+  </div>
+  
